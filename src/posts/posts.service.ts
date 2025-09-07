@@ -18,5 +18,6 @@ export class PostsService {
     createPost(postDto: CreatePostInput): Promise<Post> {
       const newPost = this.postRepository.create(postDto);
       return this.postRepository.save(newPost);
+      
  }
 }
