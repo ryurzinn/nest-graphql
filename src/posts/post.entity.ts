@@ -1,8 +1,9 @@
 import {ObjectType, Field, Int} from '@nestjs/graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+
 @ObjectType()
+@Entity()
 export class Post {
 
     @PrimaryGeneratedColumn()
