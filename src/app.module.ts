@@ -6,6 +6,7 @@ import {GraphQLModule} from '@nestjs/graphql';
 import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
 import {join} from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Post } from './posts/post.entity';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'database.sqlite',
-      entities: [__dirname + '/**/*.entity{.ts,.js'],
+      entities: [Post],
       synchronize: true, // Solo para desarrollo
     }),
     PostsModule
