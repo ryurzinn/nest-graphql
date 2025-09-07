@@ -18,7 +18,7 @@ import { Post } from './posts/post.entity';
       type: 'sqlite',
       database: 'database.sqlite',
       entities: [Post],
-      synchronize: true, // Solo para desarrollo
+      synchronize: true, 
     }),
     PostsModule
   ],
