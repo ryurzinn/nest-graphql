@@ -7,6 +7,7 @@ import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
 import {join} from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Post } from './posts/post.entity';
+import { AuthorModule } from './author/author.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { Post } from './posts/post.entity';
       entities: [Post],
       synchronize: true, 
     }),
-    PostsModule
+    PostsModule,
+    AuthorModule
   ],
   controllers: [AppController],
   providers: [AppService],
