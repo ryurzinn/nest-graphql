@@ -8,6 +8,7 @@ import {join} from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Post } from './posts/post.entity';
 import { AuthorModule } from './author/author.module';
+import { Author } from './author/entities/author.entity';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { AuthorModule } from './author/author.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'database.sqlite',
-      entities: [Post],
+      entities: [Post, Author],
       synchronize: true, 
     }),
     PostsModule,
