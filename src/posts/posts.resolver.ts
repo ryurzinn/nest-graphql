@@ -1,9 +1,10 @@
-import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { PostsService } from './posts.service';
 import { Post } from './post.entity';
 import { CreatePostInput } from './dto/create-post.dto';
+import { Author } from 'src/author/entities/author.entity';
 
-@Resolver()
+@Resolver((of) => Post)
 export class PostsResolver {
     
  constructor(private postService: PostsService){}
@@ -18,8 +19,14 @@ export class PostsResolver {
     return this.postService.findProductById(id);
  }
 
+ @ResolveField((returns) => Author)
+ author(@Parent() post: Post): Promise<Author | null> {
+  return this.postService.getAuthor(post.authorId)
+ }
+
  @Mutation((returns) => Post)
- createPost(@Args('postInput') postInput: CreatePostInput) {
+ createPost(@Args('postInput') postInput: CreatePostInput) {    
   return this.postService.createPost(postInput);
  }  
+ 
 }
